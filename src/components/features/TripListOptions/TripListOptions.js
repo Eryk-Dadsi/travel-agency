@@ -2,30 +2,52 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './TripListOptions.scss';
 
-import {Row, Col} from 'react-flexbox-grid';
+import { Row, Col } from 'react-flexbox-grid';
 
 class TripListOptions extends React.Component {
-  handleTags(tag, checked){
-    if(checked) {
+  handleTags(tag, checked) {
+
+
+    if (checked) {
       console.log('Adding tag', tag);
       // TODO - use action dispatcher from props
+      this.props.filters.tags.push(tag);
+      this.props.changeSearchTags(this.props.filters.tags);
     } else {
       console.log('Removing tag', tag);
       // TODO - use action dispatcher from props
+      const tagIndex = this.props.filters.tags.indexOf(tag);
+      this.props.filters.tags.splice(tagIndex, 1);
+      this.props.changeSearchTags(this.props.filters.tags);
     }
   }
 
-  handleDuration(type, value){
-    console.log('Changing duration', type, value);
+  handleDuration(type, value) {
     // TODO - use action dispatcher from props
+
+    let duration = {};
+
+    if (type == 'from') {
+      duration = {
+        from: Number(value),
+        to: this.props.filters.duration.to,
+      };
+    } else if (type == 'to') {
+      duration = {
+        from: this.props.filters.duration.from,
+        to: Number(value),
+      };
+    }
+
+    this.props.changeSearchDuration(duration);
   }
 
-  handleSearch(phrase){
+  handleSearch(phrase) {
     this.props.changeSearchPhrase(phrase);
   }
 
-  render(){
-    const {tags, filters} = this.props;
+  render() {
+    const { tags, filters } = this.props;
     return (
       <div className={styles.component}>
         <Row around="lg">
@@ -73,6 +95,8 @@ TripListOptions.propTypes = {
   tags: PropTypes.object,
   filters: PropTypes.object,
   changeSearchPhrase: PropTypes.func,
+  changeSearchDuration: PropTypes.func,
+  changeSearchTags: PropTypes.func,
 };
 
 export default TripListOptions;
