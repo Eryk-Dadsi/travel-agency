@@ -22,8 +22,6 @@ export const changeSearchTags = payload => ({ payload, type: CHANGE_TAGS });
 
 // reducer
 export default function reducer(statePart = [], action = {}) {
-  console.log(statePart);
-  console.log(action.payload);
   switch (action.type) {
     case CHANGE_PHRASE:
       return {
