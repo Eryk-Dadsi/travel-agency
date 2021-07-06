@@ -9,7 +9,8 @@ const OrderOptionIcons = ({ values, required, currentValue, setOptionValue }) =>
 
   <div className={styles.component}>
     {required ? '' : (
-      <div setOptionValue={setOptionValue('')}> <Icon name={'times-circle'} />
+      <div setOptionValue={setOptionValue('')}>
+        <Icon name={'times-circle'} />
         {'none'}</div>
     )}
     {values.map(value => (
