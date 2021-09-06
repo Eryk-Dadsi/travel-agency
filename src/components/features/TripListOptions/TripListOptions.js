@@ -9,11 +9,9 @@ class TripListOptions extends React.Component {
 
 
     if (checked) {
-      // TODO - use action dispatcher from props
       this.props.filters.tags.push(tag);
       this.props.changeSearchTags(this.props.filters.tags);
     } else {
-      // TODO - use action dispatcher from props
       const tagIndex = this.props.filters.tags.indexOf(tag);
       this.props.filters.tags.splice(tagIndex, 1);
       this.props.changeSearchTags(this.props.filters.tags);
@@ -21,7 +19,6 @@ class TripListOptions extends React.Component {
   }
 
   handleDuration(type, value) {
-    // TODO - use action dispatcher from props
 
     let duration = {};
 

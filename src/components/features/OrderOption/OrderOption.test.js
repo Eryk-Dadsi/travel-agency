@@ -57,11 +57,9 @@ const mockPropsForType = {
 };
 
 const testValue = mockProps.values[1].id;
-// const testValueNumber = 3;
 
 for (let type in optionTypes) {
   describe(`Component OrderOption with type=${type}`, () => {
-    /* test setup */
     let component;
     let subcomponent;
     let renderedSubcomponent;
@@ -78,16 +76,13 @@ for (let type in optionTypes) {
       renderedSubcomponent = subcomponent.dive();
 
     });
-    /* common tests */
     it(`renders ${optionTypes[type]}`, () => {
       expect(subcomponent).toBeTruthy();
       expect(subcomponent.length).toBe(1);
     });
 
-    /* type-specific tests */
     switch (type) {
       case 'dropdown': {
-        /* tests for dropdown */
         it('contains select and options', () => {
           const select = renderedSubcomponent.find('select');
           expect(select.length).toBe(1);
@@ -114,7 +109,6 @@ for (let type in optionTypes) {
           const component = renderedSubcomponent.find('.component');
           expect(component.length).toBe(1);
 
-          // const icon = component.find('.icon');
 
         });
 

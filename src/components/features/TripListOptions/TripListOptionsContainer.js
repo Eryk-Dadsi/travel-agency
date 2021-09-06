@@ -12,7 +12,6 @@ const mapDispatchToProps = dispatch => ({
   changeSearchPhrase: phrase => dispatch(changeSearchPhrase(phrase)),
   changeSearchDuration: (type, value) => dispatch(changeSearchDuration(type, value)),
   changeSearchTags: (tag, checked) => dispatch(changeSearchTags(tag, checked)),
-  // TODO - add more dispatchers for other filters
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TripListOptions);
